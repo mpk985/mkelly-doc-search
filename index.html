@@ -1,0 +1,64 @@
+<!DOCTYPE html>	
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="styles.css">
+		<title>Browse Local Doctors
+		</title>
+	</head>
+	<body>
+	<div ng-app="app-root" ng-controller="doctorCtrl" class="root">
+		
+
+			<header align=center id="header"> Browse Local Doctors & Specialists</header>
+
+			<div id="selected-doctor">
+
+				
+
+				<div ng-show="userDoc" class="doctor-details">
+					<h4 ng-hide="userDoc">Select any doctor, or click to sort by name, specialty, or rating:</h4>
+						Dr. {{userDoc.firstname}} {{userDoc.lastname}}, 
+						{{userDoc.specialty}}<br>
+						Years in Practice: {{userDoc.yearsOfExperience}}<br>
+						Rating: {{userDoc.rating}} out of 5
+				</div>
+				
+			</div>
+			
+
+			<h5 ng-show=false>Similar Doctors(by {{userOrder}}):</h5>
+		
+			<div class="div-table">
+				<table border="1" width="100%">
+  				<tr>
+  					
+   			 	<th ng-click="orderByUser('lastname')" class="name-sort">Name</th>
+   				 <th ng-click="orderByUser('specialty')" class="specialty-sort">Specialty</th>
+   				 <th ng-click="orderByUser('rating')" class="rating-sort">Rating</th>
+  				</tr>
+  				<tr ng-repeat="x in doctors | orderBy:userOrder">
+   			 		<td ng-click="userDoctor(x)" class="name-hover">Dr. {{x.firstname}} {{x.lastname}}</td>
+   			 		<td>{{x.specialty}}</td>
+   			 		<td>{{x.rating}}</td>
+ 		 		</tr>
+				</table>
+			</div>
+
+			
+			<footer class="suggestions">
+				<ul ng-show="userDoc" class="similar-doctors">
+						Similar {{userDoc.specialty}}s: 
+				<li ng-show="userDoc" ng-repeat="x in doctors | filter:{specialty: userDoc.specialty}" ng-if="x.lastname != userDoc.lastname">Dr. {{x.firstname}} {{x.lastname}}<br>
+					Years in Practice: {{x.yearsOfExperience}}
+				</li>
+				</ul>
+			</footer>
+	</div>
+
+
+
+	<script src="doctorController.js"></script>
+	</body>
+</html>

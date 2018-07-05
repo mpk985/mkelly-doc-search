@@ -1,0 +1,55 @@
+header{
+	text-decoration: underline;
+	font-size: 2em;
+	padding: 40px;
+}
+body{
+
+	font-family: Georgia,"Times New Roman", sans-serif;
+}
+
+.doctor-details{
+	text-align: center;
+	margin-left: 10px;
+	padding: 20px;
+	width: 75%;
+	height: 100%;
+	border-style: solid;
+	border-width: 1px;
+	float:left;
+	clear: left;
+	overflow: auto;
+	background-color: #E2E2E2;
+}
+tr:nth-child(even){
+	background-color: #E2E2E2;
+}
+.specialty-sort:hover, .rating-sort:hover,.name-sort:hover{
+	background-color: #000000;
+	color: #FFFFFF;
+}
+td{
+	text-align: center;
+}
+
+.name-hover:hover{
+	background-color: #91b6f2;
+	font-color: #FFFFFF;
+}
+#selected-doctor{
+	display: block;
+	float: left;
+	width: 25%;
+}
+.div-table{
+	width: 75%;
+	height: 100%;
+	overflow: scroll;
+	display:inline;
+	float: right;
+}
+.suggestions{
+	display: inline;
+}
+
+	
